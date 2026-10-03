@@ -13,6 +13,10 @@
            review="android-review.googlesource.com"
            revision="refs/tags/android-17.0.0_r1" />
 
+  <remote  name="arkwear"
+           fetch="https://github.com/ArkWear"
+           revision="refs/heads/17.0" />
+
   <default revision="refs/heads/lineage-24.0"
            remote="github"
            sync-c="true"
@@ -1104,4 +1108,130 @@
 
   <include name="snippets/crdroid.xml" />
   <include name="snippets/lineage.xml" />
+  <!-- ===== ArkWear self-reference overrides (forked from crDroid 17.0) ===== -->
+  <remove-project name="crdroidandroid/android" />
+  <project path="android" name="android" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_build" />
+  <project path="build/make" name="android_build" remote="arkwear" groups="pdk,sysui-studio">
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <remove-project name="crdroidandroid/android_build_soong" />
+  <project path="build/soong" name="android_build_soong" remote="arkwear" groups="pdk,tradefed,sysui-studio" />
+  <remove-project name="crdroidandroid/android_art" />
+  <project path="art" name="android_art" remote="arkwear" groups="pdk" />
+  <remove-project name="crdroidandroid/android_bionic" />
+  <project path="bionic" name="android_bionic" remote="arkwear" groups="pdk" />
+  <remove-project name="crdroidandroid/android_bootable_recovery" />
+  <project path="bootable/recovery" name="android_bootable_recovery" remote="arkwear" groups="pdk" />
+  <remove-project name="crdroidandroid/android_device_crdroid_sepolicy" />
+  <project path="device/lineage/sepolicy" name="android_device_crdroid_sepolicy" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_external_bouncycastle" />
+  <project path="external/bouncycastle" name="android_external_bouncycastle" remote="arkwear" groups="pdk" />
+  <remove-project name="crdroidandroid/android_external_FadingEdgeLayout" />
+  <project path="external/FadingEdgeLayout" name="android_external_FadingEdgeLayout" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_external_jemalloc-new" />
+  <project path="external/jemalloc_new" name="android_external_jemalloc-new" remote="arkwear" groups="pdk" />
+  <remove-project name="crdroidandroid/android_frameworks_av" />
+  <project path="frameworks/av" name="android_frameworks_av" remote="arkwear" groups="pdk,sysui-studio" />
+  <remove-project name="crdroidandroid/android_frameworks_base" />
+  <project path="frameworks/base" name="android_frameworks_base" remote="arkwear" groups="pdk-cw-fs,pdk-fs,sysui-studio" />
+  <remove-project name="crdroidandroid/android_frameworks_libs_systemui" />
+  <project path="frameworks/libs/systemui" name="android_frameworks_libs_systemui" remote="arkwear" groups="pdk-cw-fs,pdk-fs,sysui-studio" />
+  <remove-project name="crdroidandroid/android_frameworks_native" />
+  <project path="frameworks/native" name="android_frameworks_native" remote="arkwear" groups="pdk,sysui-studio" />
+  <remove-project name="crdroidandroid/android_frameworks_opt_net_wifi" />
+  <project path="frameworks/opt/net/wifi" name="android_frameworks_opt_net_wifi" remote="arkwear" groups="pdk,sysui-studio" />
+  <remove-project name="crdroidandroid/android_frameworks_opt_telephony" />
+  <project path="frameworks/opt/telephony" name="android_frameworks_opt_telephony" remote="arkwear" groups="pdk,sysui-studio" />
+  <remove-project name="crdroidandroid/android_hardware_interfaces" />
+  <project path="hardware/interfaces" name="android_hardware_interfaces" remote="arkwear" groups="pdk,sysui-studio" />
+  <remove-project name="crdroidandroid/android_hardware_qcom_display" />
+  <project path="hardware/qcom-caf/sm8150/display" name="android_hardware_qcom_display" remote="arkwear" groups="qcom" revision="17.0-caf-sm8150" />
+  <remove-project name="crdroidandroid/android_lineage-sdk" />
+  <project path="lineage-sdk" name="android_lineage-sdk" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_AppLocker" />
+  <project path="packages/apps/AppLocker" name="android_packages_apps_AppLocker" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_Backgrounds" />
+  <project path="packages/apps/Backgrounds" name="android_packages_apps_Backgrounds" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_ColumbusService" />
+  <project path="packages/apps/ColumbusService" name="android_packages_apps_ColumbusService" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_crDroidSettings" />
+  <project path="packages/apps/crDroidSettings" name="android_packages_apps_crDroidSettings" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_Dialer" />
+  <project path="packages/apps/Dialer" name="android_packages_apps_Dialer" remote="arkwear" groups="pdk-fs" />
+  <remove-project name="crdroidandroid/android_packages_apps_DocumentsUI" />
+  <project path="packages/apps/DocumentsUI" name="android_packages_apps_DocumentsUI" remote="arkwear" groups="pdk-cw-fs,pdk-fs" />
+  <remove-project name="crdroidandroid/android_packages_apps_GameSpace" />
+  <project path="packages/apps/GameSpace" name="android_packages_apps_GameSpace" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_Launcher3" />
+  <project path="packages/apps/Launcher3" name="android_packages_apps_Launcher3" remote="arkwear" groups="pdk-fs,sysui-studio,pdk-cw-tvc" />
+  <remove-project name="crdroidandroid/android_packages_apps_LineageParts" />
+  <project path="packages/apps/LineageParts" name="android_packages_apps_LineageParts" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_LMOFreeform" />
+  <project path="packages/apps/LMOFreeform" name="android_packages_apps_LMOFreeform" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_Matlog" />
+  <project path="packages/apps/Matlog" name="android_packages_apps_Matlog" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_Messaging" />
+  <project path="packages/apps/Messaging" name="android_packages_apps_Messaging" remote="arkwear" groups="pdk-fs" />
+  <remove-project name="crdroidandroid/android_packages_apps_OmniStyle" />
+  <project path="packages/apps/OmniStyle" name="android_packages_apps_OmniStyle" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_Sandbox" />
+  <project path="packages/apps/Sandbox" name="android_packages_apps_Sandbox" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_Settings" />
+  <project path="packages/apps/Settings" name="android_packages_apps_Settings" remote="arkwear" groups="pdk-fs,pdk-cw-tvc,sysui-studio" />
+  <remove-project name="crdroidandroid/android_packages_apps_SetupWizard" />
+  <project path="packages/apps/SetupWizard" name="android_packages_apps_SetupWizard" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_ThemePicker" />
+  <project path="packages/apps/ThemePicker" name="android_packages_apps_ThemePicker" remote="arkwear" groups="pdk-fs,sysui-studio" />
+  <remove-project name="crdroidandroid/android_packages_apps_ThemeStore" />
+  <project path="packages/apps/ThemeStore" name="android_packages_apps_ThemeStore" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_Updater" />
+  <project path="packages/apps/Updater" name="android_packages_apps_Updater" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_apps_WallpaperPicker2" />
+  <project path="packages/apps/WallpaperPicker2" name="android_packages_apps_WallpaperPicker2" remote="arkwear" groups="pdk-fs,sysui-studio" />
+  <remove-project name="crdroidandroid/android_packages_inputmethods_LatinIME" />
+  <project path="packages/inputmethods/LatinIME" name="android_packages_inputmethods_LatinIME" remote="arkwear" groups="pdk-fs" />
+  <remove-project name="crdroidandroid/android_packages_modules_Bluetooth" />
+  <project path="packages/modules/Bluetooth" name="android_packages_modules_Bluetooth" remote="arkwear" groups="pdk" />
+  <remove-project name="crdroidandroid/android_packages_modules_Connectivity" />
+  <project path="packages/modules/Connectivity" name="android_packages_modules_Connectivity" remote="arkwear" groups="pdk-cw-fs,pdk-fs" />
+  <remove-project name="crdroidandroid/android_packages_modules_Permission" />
+  <project path="packages/modules/Permission" name="android_packages_modules_Permission" remote="arkwear" groups="pdk-cw-fs,pdk-fs" />
+  <remove-project name="crdroidandroid/android_packages_modules_Wifi" />
+  <project path="packages/modules/Wifi" name="android_packages_modules_Wifi" remote="arkwear" groups="pdk-cw-fs,pdk-fs,sysui-studio" />
+  <remove-project name="crdroidandroid/android_packages_resources_apps" />
+  <project path="packages/resources/apps" name="android_packages_resources_apps" remote="arkwear" revision="16.0" />
+  <remove-project name="crdroidandroid/android_packages_services_DeviceAsWebcam" />
+  <project path="packages/services/DeviceAsWebcam" name="android_packages_services_DeviceAsWebcam" remote="arkwear" groups="pdk-cw-fs,pdk-fs" />
+  <remove-project name="crdroidandroid/android_packages_services_OmniJaws" />
+  <project path="packages/services/OmniJaws" name="android_packages_services_OmniJaws" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_services_QuickLook" />
+  <project path="packages/services/QuickLook" name="android_packages_services_QuickLook" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_packages_services_Telecomm" />
+  <project path="packages/services/Telecomm" name="android_packages_services_Telecomm" remote="arkwear" groups="pdk-cw-fs,pdk-fs" />
+  <remove-project name="crdroidandroid/android_packages_services_Telephony" />
+  <project path="packages/services/Telephony" name="android_packages_services_Telephony" remote="arkwear" groups="pdk-cw-fs,pdk-fs" />
+  <remove-project name="crdroidandroid/android_system_core" />
+  <project path="system/core" name="android_system_core" remote="arkwear" groups="pdk" />
+  <remove-project name="crdroidandroid/android_system_fs_fs_mgr" />
+  <project path="system/fs/fs_mgr" name="android_system_fs_fs_mgr" remote="arkwear" groups="pdk" />
+  <remove-project name="crdroidandroid/android_system_memory_libmeminfo" />
+  <project path="system/memory/libmeminfo" name="android_system_memory_libmeminfo" remote="arkwear" groups="pdk" />
+  <remove-project name="crdroidandroid/android_system_sepolicy" />
+  <project path="system/sepolicy" name="android_system_sepolicy" remote="arkwear" groups="pdk" />
+  <remove-project name="crdroidandroid/android_system_update_engine" />
+  <project path="system/update_engine" name="android_system_update_engine" remote="arkwear" groups="pdk" />
+  <remove-project name="crdroidandroid/android_system_vold" />
+  <project path="system/vold" name="android_system_vold" remote="arkwear" groups="pdk" />
+  <remove-project name="crdroidandroid/android_vendor_addons" />
+  <project path="vendor/addons" name="android_vendor_addons" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_vendor_crdroid" />
+  <project path="vendor/lineage" name="android_vendor_crdroid" remote="arkwear" />
+  <remove-project name="crdroidandroid/android_vendor_themes" />
+  <project path="vendor/themes" name="android_vendor_themes" remote="arkwear" />
 </manifest>
